@@ -2,7 +2,12 @@
     <form method="post" @submit.prevent="createQuiz">
         <div class="form-group mb-4">
             <div class="form-floating">
-                <input type="email" v-model="question" class="form-control" placeholder="1 + 1 ?" required /><label>Question</label>
+                <input type="text" v-model="theme" class="form-control" placeholder="Mathematique" required /><label>Question</label>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="form-floating">
+                <input type="text" v-model="question" class="form-control" placeholder="1 + 1 ?" required /><label>Question</label>
             </div>
         </div>
 
@@ -49,11 +54,11 @@
 export default {
     name: 'createQuizView',
     data() {
-        return { question: '', proposition1: '', proposition2: '', proposition3: '', reponse: '', };
+        return { theme: '', question: '', proposition1: '', proposition2: '', proposition3: '', reponse: '', };
     },
     methods: {
         createQuiz() {
-            this.question && this.reponse && this.proposition1 && this.proposition2 && this.proposition3 ? this.$router.push('/quiz/view/dashboard') : this.$router.push('/quiz/view/create');
+            this.theme && this.question && this.reponse && this.proposition1 && this.proposition2 && this.proposition3 ? this.$router.push('/quiz/view/dashboard') : this.$router.push('/quiz/view/create');
         }
     },
 }

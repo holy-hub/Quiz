@@ -38,7 +38,7 @@ import SignInView from '@/views/SignIn.vue';
 
 export default {
     name: 'SigninApp',
-    props: { app: String, },
+    props: { head: String, },
     components: { SignInView, },
     data() {
         return {  };

@@ -1,4 +1,5 @@
 <template>
+    <h1 class="text-center">Not Good</h1>
     <NotFoundComponent error="4 0 4" />
 </template>
 
