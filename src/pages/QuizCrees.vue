@@ -79,7 +79,6 @@
 
 <script>
 import MenuView   from '@/views/dashboard/MenuView.vue'
-import './assets/style/css/output.css';
 
 export default {
     name: 'QuizCrees',

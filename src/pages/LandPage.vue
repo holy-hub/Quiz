@@ -17,8 +17,7 @@
 </template>
 
 <script>
-// import '@/assets/style/css/styles.css';
-// import '@/assets/style/js/scripts.js';
+// import '@/assets/style/css/styles.css'; // import '@/assets/style/js/scripts.js';
 import LandView from '@/views/LandPage.vue'
 
 export default {
