@@ -7,24 +7,38 @@ import LoginApp                           from './pages/Login.vue'
 import SignInApp                          from './pages/SignIn.vue'
 import CreateQuiz                         from './pages/CreateQuiz.vue'
 import DoQuiz                             from './pages/DoQuiz.vue'
-import NotFound                           from './pages/[...all].vue'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ListQuiz                           from './pages/ListQuiz.vue'
+import UpdateQuiz                         from './pages/UpdateQuiz.vue'
+import ScoreCheck                         from './pages/ScoreCheck.vue'
+import MenuQuiz                           from './pages/MenuQuiz.vue'
+import store                              from './store/storeCreation.js'
+import $                                  from 'jquery'
 import 'bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const routes = [
     { path: '/', component: LandPage, name: 'landPage' },
     { path: '/quiz/view', children: [
-        { path: '/dashboard', component: DashboardView, name: 'dashboard'  },
-        { path: '/create',    component: CreateQuiz,    name: 'createQuiz' },
-        { path: '/do/new',    component: DoQuiz,        name: 'doQuiz'     },
-        { path: '/not/found', component: NotFound,      name: 'notFound'   },
-        { path: '/:pathMatch(.*)*',      redirect: '/not/found'            },
+        { path: '/admin', children: [
+            { path: '/:id/dashboard',  component: DashboardView, name: 'dashboard'  },
+            { path: '/create',         component: CreateQuiz,    name: 'createQuiz' },
+            { path: '/update/:idQuiz', component: UpdateQuiz,    name: 'updateQuiz' },
+            { path: '/all/creation',   component: ListQuiz,      name: 'listQuiz'   },
+        ] },
+        { path: '/user', children: [
+            { path: '/do/new',    component: DoQuiz,     name: 'doQuiz' },
+            { path: '/:idQuiz/score', component: ScoreCheck, name: 'score'  },
+            { path: '/menu',      component: MenuQuiz,   name: 'menu'   },
+        ] },
         { path: '/accounts', children: [
             { path: '/login',  component: LoginApp,  name: 'login'  },
             { path: '/signin', component: SignInApp, name: 'signin' },
         ] },
-    ]},
+    ] },
+    { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
+
 const router = createRouter({ history : createWebHistory(), routes })
 
-createApp(App).use(router).mount('#app')
+createApp(App).config.globalProperties.$$ = $
+createApp(App).use(router).use(store).mount('#app')

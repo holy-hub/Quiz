@@ -2,38 +2,39 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
             <a class="navbar-brand" href="/">{{ head }}</a>
-            <router-link class="navbar-brand ms-auto" :to="{ name: 'signin' }">Inscription</router-link>
+            <router-link class="navbar-brand ms-auto" :to="{ name: 'listQuiz' }">LISTE</router-link>
         </div>
     </nav>
-
     <section class="background-radial-gradient overflow-hidden">
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
             <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                        Bienvenue cher(e) <br /><span style="color: hsl(218, 81%, 75%)">createur(trice) de culture . . .</span>
-                    </h1>
-                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">Il n'y a rien de plus enrichissant que
-                        la quête du savoir. Explorez de nouveaux horizons, élargissez vos perspectives et nourrissez
-                        votre esprit avec une offre inégalée pour vous cultiver.</p>
+                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">Modifiez votre Quiz.<br /><span style="color: hsl(218, 81%, 75%)">Une mise a jour necessaire de votre Quiz . . .</span></h1>
+                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">Il n'y a rien de plus enrichissant que la quête du savoir. Explorez de nouveaux horizons, élargissez vos perspectives et nourrissez votre esprit avec une offre inégalée pour vous cultiver.</p>
                 </div>
 
-                <LoginView />
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                    <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <UpdateQuizView />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-import LoginView from '@/views/Login.vue'
+import UpdateQuizView from '@/views/UpdateQuiz.vue'
 
 export default {
-    name: 'LoginApp',
-    props: { head: String, },
-    components: { LoginView, },
-    data() {
-        return {};
-    }, }
+    name: 'UpdateQuiz',
+    components: { UpdateQuizView, },
+    props: { app: String, head: String, },
+}
 </script>
 
 <style scoped>

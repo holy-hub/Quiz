@@ -1,9 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
-            <a class="navbar-brand">{{ head }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <a class="navbar-brand" href="/">{{ head }}</a>
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
+            <div class="navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><router-link class="nav-link" :to="{ name: 'dashboard' }">DASHBOARD</router-link></li>
                 </ul>
@@ -14,7 +14,7 @@
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
             <div class="row gx-lg-5 align-items-center mb-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">La creation de vos<br /><span style="color: hsl(218, 81%, 75%)">Quiz a la hauteur de votre creativite . . .</span></h1>
+                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">Creez de vos Quiz.<br /><span style="color: hsl(218, 81%, 75%)">Des Quiz uniques selon votre choix . . .</span></h1>
                     <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">Il n'y a rien de plus enrichissant que la quête du savoir. Explorez de nouveaux horizons, élargissez vos perspectives et nourrissez votre esprit avec une offre inégalée pour vous cultiver.</p>
                 </div>
 
@@ -38,7 +38,7 @@ import CreateQuizView from '@/views/CreateQuiz.vue'
 export default {
     name: 'CreateQuiz',
     components: { CreateQuizView, },
-    props: { app: String, },
+    props: { app: String, head: String, },
 }
 </script>
 

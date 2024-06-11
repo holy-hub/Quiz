@@ -1,5 +1,5 @@
 <template>
-    <form method="post" @submit.prevent="createQuiz">
+    <form method="post" @submit.prevent="updateQuiz" ::key="quiz.id">
         <div class="form-group mb-4">
             <div class="form-floating">
                 <input type="email" v-model="question" class="form-control" placeholder="1 + 1 ?" required /><label>Question</label>
@@ -62,24 +62,28 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block mb-4"> Creer un nouveau Quiz</button>
+        <div class="d-flex justify-content-arround">
+            <button type="submit" class="btn btn-primary btn-block mb-4"> Creer un nouveau Quiz </button>
+            <button @click="deleteQuiz(quiz.id)" class="btn btn-danger btn-block mb-4"> Supprimer ce quiz </button>
+        </div>
     </form>
-    <button @click="createQuizAndQuit()" class="btn btn-primary btn-block mb-4"> Creer un nouveau Quiz et quitter</button>
 </template>
 
 <script>
 import store from '@/store/storeCreation.js'
 
 export default {
-    name: 'createQuizView',
+    name: 'UpdateQuizView',
+    computed: { quizDisplay() { return store.state.quizzes }, },
     data() {
-        return { quiz: { question: '', propositions: { proposition1: '', proposition2: '', proposition3: '' }, reponse: '', niveau: '', categorie: '', }, };
+        return { quiz: { question: 'quizDisplay.question', propositions: { proposition1: 'quizDisplay.propositions.proposition1', proposition2: 'quizDisplay.propositions.proposition2', proposition3: 'quizDisplay.propositions.proposition3' }, reponse: 'quizDisplay.reponse', niveau: 'quizDisplay.niveau', categorie: 'quizDisplay.categorie', }, };
     },
     methods: {
-        createQuiz() { this.quiz.question && this.quiz.reponse && this.quiz.propositions.proposition1 && this.quiz.propositions.proposition2 && this.quiz.propositions.proposition3 && this.quiz.niveau && this.quiz.categorie ? store.dispatch('createQuiz', this.quiz) : this.$router.push('/create'); },
-        createQuizAndQuit() {
-            if (this.quiz.question && this.quiz.reponse && this.quiz.propositions.proposition1 && this.quiz.propositions.proposition2 && this.quiz.propositions.proposition3 && this.quiz.niveau && this.quiz.categorie) { store.dispatch('createQuiz', this.quiz); this.$router.push('/dashboard') } else { this.$router.push('/create'); }
+        updateQuiz(id) {
+            if (this.quiz.question && this.quiz.reponse && this.quiz.propositions.proposition1 && this.quiz.propositions.proposition2 && this.quiz.propositions.proposition3 && this.quiz.niveau && this.quiz.categorie) { store.dispatch('updateQuiz', { id, quiz: this.quiz }) }
         },
+        deleteQuiz(id) { store.dispatch('deleteQuiz', id) },
     },
+    
 }
 </script>

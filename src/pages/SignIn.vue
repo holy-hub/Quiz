@@ -2,12 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
             <a class="navbar-brand" href="/">{{ head }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><router-link class="nav-link" :to="{ name: 'login' }">Connexion</router-link></li>
-                </ul>
-            </div>
+            <router-link class="navbar-brand ms-auto" :to="{ name: 'login' }">CONNEXION</router-link>
         </div>
     </nav>
 
@@ -38,7 +33,7 @@ import SignInView from '@/views/SignIn.vue';
 
 export default {
     name: 'SigninApp',
-    props: { app: String, },
+    props: { app: String, head: String, },
     components: { SignInView, },
     data() {
         return {  };
