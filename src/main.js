@@ -26,9 +26,9 @@ const routes = [
             { path: '/all/creation',   component: ListQuiz,      name: 'listQuiz'   },
         ] },
         { path: '/user', children: [
-            { path: '/do/new',    component: DoQuiz,     name: 'doQuiz' },
+            { path: '/do/new',        component: DoQuiz,     name: 'doQuiz' },
             { path: '/:idQuiz/score', component: ScoreCheck, name: 'score'  },
-            { path: '/menu',      component: MenuQuiz,   name: 'menu'   },
+            { path: '/menu',          component: MenuQuiz,   name: 'menu'   },
         ] },
         { path: '/accounts', children: [
             { path: '/login',  component: LoginApp,  name: 'login'  },
