@@ -47,23 +47,12 @@
 </template>
 
 <script>
-import '@/assets/style/css/output.css';
 export default {
   name: 'LandView',
   props: { msg: String, subMsg: String, head: String },
-  mounted() {
-    this.handleScroll();
-    window.addEventListener('scroll', this.handleScroll);
-    document.addEventListener('click', this.handleClick);
-  },
-  methods: {
-    handleScroll() { const scrollpos = window.scrollY; const header = this.$el.querySelector('#header'); const navcontent = this.$el.querySelector('#nav-content'); const navaction = this.$el.querySelector('#navAction'); const toToggle = this.$el.querySelectorAll('.toggleColour'); if (scrollpos > 10) { header.classList.add('bg-white'); navaction.classList.remove('bg-white'); navaction.classList.add('gradient'); navaction.classList.remove('text-gray-800'); navaction.classList.add('text-white'); for (let i = 0; i < toToggle.length; i++) { toToggle[i].classList.add('text-gray-800'); toToggle[i].classList.remove('text-white'); } header.classList.add('shadow'); navcontent.classList.remove('bg-gray-100'); navcontent.classList.add('bg-white'); } else { header.classList.remove('bg-white'); navaction.classList.remove('gradient'); navaction.classList.add('bg-white'); navaction.classList.remove('text-white'); navaction.classList.add('text-gray-800'); for (let i = 0; i < toToggle.length; i++) { toToggle[i].classList.add('text-white'); toToggle[i].classList.remove('text-gray-800'); } header.classList.remove('shadow'); navcontent.classList.remove('bg-white'); navcontent.classList.add('bg-gray-100'); } },
-    handleClick(e) { const target = e.target; const navMenuDiv = this.$el.querySelector('#nav-content'); const navMenu = this.$el.querySelector('#nav-toggle'); if (!this.checkParent(target, navMenuDiv)) { navMenuDiv.classList.contains('hidden') ? this.checkParent(target, navMenu) ? null : navMenuDiv.classList.add('hidden') : navMenuDiv.classList.add('hidden'); } },
-    checkParent(t, elm) { while (t.parentNode) { if (t === elm) { return true; } t = t.parentNode; } return false; }
-  }
 }
 </script>
 
 <style>
-    .gradient { background: linear-gradient(90deg, #d53369 0%, #daae51 100%); }
-  </style>
+  .gradient { background: linear-gradient(90deg, #d53369 0%, #daae51 100%); }
+</style>

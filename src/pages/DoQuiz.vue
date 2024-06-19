@@ -11,6 +11,7 @@
 
 <script>
 import MakeQuiz from '@/views/MakeQuiz.vue'
+
 export default {
     name: 'DoQuiz',
     components: { MakeQuiz, },

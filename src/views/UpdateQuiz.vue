@@ -70,19 +70,15 @@
 </template>
 
 <script>
-import store from '@/store/storeCreation.js'
 
 export default {
     name: 'UpdateQuizView',
-    computed: { quizDisplay() { return store.state.quizzes }, },
     data() {
         return { quiz: { question: 'quizDisplay.question', propositions: { proposition1: 'quizDisplay.propositions.proposition1', proposition2: 'quizDisplay.propositions.proposition2', proposition3: 'quizDisplay.propositions.proposition3' }, reponse: 'quizDisplay.reponse', niveau: 'quizDisplay.niveau', categorie: 'quizDisplay.categorie', }, };
     },
     methods: {
-        updateQuiz(id) {
-            if (this.quiz.question && this.quiz.reponse && this.quiz.propositions.proposition1 && this.quiz.propositions.proposition2 && this.quiz.propositions.proposition3 && this.quiz.niveau && this.quiz.categorie) { store.dispatch('updateQuiz', { id, quiz: this.quiz }) }
-        },
-        deleteQuiz(id) { store.dispatch('deleteQuiz', id) },
+        updateQuiz() { },
+        deleteQuiz() { },
     },
     
 }

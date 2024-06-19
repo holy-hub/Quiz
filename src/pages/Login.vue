@@ -30,10 +30,7 @@ import LoginView from '@/views/Login.vue'
 export default {
     name: 'LoginApp',
     props: { head: String, },
-    components: { LoginView, },
-    data() {
-        return {};
-    }, }
+    components: { LoginView, }, }
 </script>
 
 <style scoped>

@@ -10,12 +10,10 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: 'ScoreView',
     props: { idQuiz: { type: String, required: true }, },
-    computed: {
-        score() { return this.$store.state.score.find(item => item[0] === this.id); }
-    },
 }
 </script>

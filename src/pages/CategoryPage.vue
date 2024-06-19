@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
             <a class="navbar-brand" href="/">{{ head }}</a>
-            <router-link class="navbar-brand ms-auto" :to="{ name: 'dashboard' }">DASHBOARD</router-link>
+            <router-link class="navbar-brand ms-auto" :to="{ name: 'listQuiz' }">Liste des QUIZ</router-link>
         </div>
     </nav>
 

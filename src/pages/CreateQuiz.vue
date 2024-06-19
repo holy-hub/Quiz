@@ -5,7 +5,7 @@
             <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
             <div class="navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><router-link class="nav-link" :to="{ name: 'dashboard' }">DASHBOARD</router-link></li>
+                    <li class="nav-item"><router-link class="nav-link" :to="{ name: 'listQuiz' }">LISTE des QUIZ</router-link></li>
                 </ul>
             </div>
         </div>

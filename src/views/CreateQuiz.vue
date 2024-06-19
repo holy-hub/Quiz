@@ -65,66 +65,65 @@
             <div class="col-md-6 mb-4">
                 <div class="form-group">
                     <div class="form-floating">
-                        <label>Categorie du Quiz (Economie)</label>
-                        <input type="text" v-model="category" list="browse" placeholder="" class="form-control"
+                        <input type="text" v-model="category" list="browse" placeholder="category" class="form-control"
                             required />
                         <datalist id="browse">
                             <option :v-for="category in categories" value="{{ category }}">{{ category }}</option>
                         </datalist>
+                        <label>Categorie (Economie)</label>
                     </div>
                 </div>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block mb-4"> Creer un nouveau Quiz</button>
+        <button type="submit" class="btn btn-primary btn-block mb-4 d-block m-auto"> Creer un nouveau Quiz</button>
     </form>
-    <button @click="createQuizAndQuit()" class="btn btn-primary btn-block mb-4"> Creer un nouveau Quiz et
+    <button @click="createQuizAndQuit()" class="btn btn-primary btn-block mb-4 d-block m-auto"> Creer un nouveau Quiz et
         quitter</button>
 </template>
 
 <script>
-import axios from 'axios';
+    import api from '@/api';
 
-export default {
-    name: 'createQuizView',
-    data() {
-        return { score: '', errorMessage: '', question: '', proposition1: '', proposition2: '', proposition3: '', reponse: '', niveau: '', categorie: '', };
-    },
-    created() {
-        this.fetchCategories();
-    },
-    methods: {
-        fetchCategories() {
-            axios.get('api/categories/')
-                .then(response => {
-                    this.categories = response.data.map(cat => cat.name);
-                })
-                .catch(error => {
-                    console.error('Error fetching categories:', error);
-                });
+    export default {
+        name: 'createQuizView',
+        data() {
+            return { categories: [], errorMessage: '', question: '', proposition1: '', proposition2: '', proposition3: '', reponse: '', niveau: '', categorie: '', };
         },
-        createQuiz() {
-            const data = {
-                question: this.question,
-                propositions: {
+        created() {
+            this.fetchCategories();
+        },
+        methods: {
+            fetchCategories() {
+                api.get('api/categories/')
+                    .then(response => {
+                        this.categories = response.data.map(cat => cat.name);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching categories:', error);
+                        this.errorMessage = 'Error fetching categories';
+                    });
+            },
+            createQuiz() {
+                const data = {
+                    question: this.question,
+                    proposition: this.proposition3,
                     proposition1: this.proposition1,
                     proposition2: this.proposition2,
-                    proposition3: this.proposition3,
-                },
-                reponse: this.reponse,
-                niveau: this.niveau,
-                category: this.category,
-            };
+                    reponse: this.reponse,
+                    level: this.niveau,
+                    category: this.category,
+                };
 
-            axios.post('api/quiz/', data)
-                .then(response => {
-                    console.log('Quiz created:', response.data);
-                })
-                .catch(error => { console.error('Error creating quiz:', error); });
+                api.post('api/quiz/', data)
+                    .then(response => {
+                        console.log('Quiz created:', response.data);
+                    })
+                    .catch(error => { console.error('Error creating quiz:', error); this.errorMessage = 'Error creating quiz'; });
+            },
+            createQuizAndQuit() {
+                this.createQuiz(); this.$router.push('/dashboard')
+            },
         },
-        createQuizAndQuit() {
-            this.createQuiz(); this.$router.push('/dashboard')
-        },
-    },
-}
+    }
 </script>
