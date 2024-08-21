@@ -1,11 +1,11 @@
-from rest_framework.authentication      import SessionAuthentication, BasicAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from django.contrib.contenttypes.fields import GenericForeignKey
-from rest_framework.permissions         import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.contenttypes.models import ContentType
-from rest_framework.response            import Response
-from rest_framework.views               import APIView
-from django.db                          import models
-from django.contrib.auth.models         import User
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class AuthToken(APIView):

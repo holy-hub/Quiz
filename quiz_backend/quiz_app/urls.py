@@ -1,27 +1,16 @@
-from django.urls  import path
-from .serializers import *
-from .views       import *
+from rest_framework.routers import DefaultRouter
 
+from django.urls  import path, include
+from .views import *
+
+routers = DefaultRouter()
+routers.register(r'users', UserViewSet)
+routers.register(r'categories', CategoryViewSet)
+routers.register(r'quizzes', QuizViewSet)
+routers.register(r'players', PlayerViewSet)
+routers.register(r'scores', ScoreViewSet)
+
+# API-DJANGO
 urlpatterns = [
-    # API-DJANGO
-    # accounts
-    path('accounts/api/login/',  login  ),
-    path('accounts/api/logout/', log_out),
-    # Quiz
-    path('api/quizzes/',       QuizList  ),
-    path('api/quiz/<int:pk>/', QuizDetail),
-    # User
-    path('api/users/',         userList  ),
-    path('api/user/<int:pk>/', userDetail),
-    # Score
-    path('api/scores/',         ScoreList  ),
-    path('api/score/<int:pk>/', ScoreDetail),
-    # Player
-    path('api/players/',         PlayerList  ),
-    path('api/player/<int:pk>/', PlayerDetail),
-    # Category
-    path('api/categories/',        categoryList  ),
-    path('api/category/<int:pk>/', categoryDetail),
-    # Archive
-    path('api/archive/', ArchiveList),
+    path('', include(routers.urls)),
 ]
